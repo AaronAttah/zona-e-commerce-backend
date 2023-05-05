@@ -22,7 +22,7 @@ productRouter.get(
   "/seed",
   expressAsyncHandler(async (req, res) => {
     // await User.remove was used to reupdate the inserted api else it will throw out duplicate error
-    await User.remove({})
+    // await User.remove({})
     const createdProducts = await Product.insertMany(data.products);
     return res.status(201).send({ products: createdProducts });
   })

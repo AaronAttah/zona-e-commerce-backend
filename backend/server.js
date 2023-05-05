@@ -19,12 +19,14 @@ app.use((err, req, res, next) => {
 
 app.use(express.json({ limit: "50mb", exended: true }));
 app.use(express.urlencoded({ extended: true,  limit: "50mb"}));
-
-mongoose.connect(process.env.MONGODB_URL || "mongodb://127.0.0.1:27017/debarron", {
+const URI = process.env.MONGODB_URL 
+// mongoose.connect(process.env.MONGODB_URL || "mongodb://127.0.0.1:27017/debarron", {
+  mongoose.connect("mongodb+srv://devtest-db:password123_4@devtest-db.zx4g9a6.mongodb.net/devtest-db?retryWrites=true&w=majority", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   // useCreateIndex: true,
 });
+
 
 const db = mongoose.connection;
 db.once("open", () => {
